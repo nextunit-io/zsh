@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# This script exports the AWS tokens to your environment, so you could switch profiles
+# without setting the exported AWS_PROFILE variable.
+#
+# This is useful if you need direct access to your AWS tokens, e.g. you'd like
+# to sign a AWS Gateway request and this endpoint is secured by IAM.
+#
+# To use this script just execute:
+#    source aws_exports.sh <profile name>
+#
+# If you do not specify the profile, you'd like to use it will be default to
+# the exported AWS_PROFILE. If there is no profile in the exported variables available
+# or the aws credentials file does not contain the profile it will fail.
+#
+# At the end of that script it will unset the exported AWS_PROFILE, so you could use
+# directly the aws cli with the exported token credentials.
+
 PROFILE="$(echo "$AWS_PROFILE")"
 
 # Profile override...
